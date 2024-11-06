@@ -1,10 +1,75 @@
+"use client"; // for dynamic interactivity with js and react hooks
 import Image from "next/image";
+import NavBar from "@/components/navBar";
+import ProjectCard from "@/components/projectCard";
+import AboutSection from "@/components/aboutSection";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+const projectInfo = [
+  { 
+    title: 'Nooz',
+    content: 'Java program that uses MVC architecture to read, edit, create, sort, display, and store news article data through a graphical user interface'
+  },
+  {
+    title: 'EclipseR',
+    content: 'C++ database manager for eclipses that utilizes hash tables, linked lists, and AVL trees Features include merging/purging data, sorting/finding by any meta data, hash table display, linked list display, pre/post-order AVL tree display, and general output'
+  },
+  {
+    title: 'Meteor Mayhem',
+    content: 'Video game demo built in Godot using their GDScript scripting language. Player has to dodge randomly generated boulders using exaggerated visual elements'
+  },
+  {
+    title: 'Python Pong',
+    content: 'Python program that imitates gameplay of the Pong arcade game against a computer using the Pygame library'
+  }
+];
+ 
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
+    <div>
+      <NavBar />
+
+      <main>
+        <section id="home" className="section">
+        <p>
+          I’m [Your Name], a [Your Job Title] with a passion for [key skill/field, e.g., web development, design, or data science]. With [X years] of experience, I specialize in [specific tools/technologies] and enjoy creating innovative, user-friendly solutions. Outside of work, I’m always learning and exploring new challenges, whether it’s [mention a hobby or interest]. Let’s connect if you’re interested in collaborating or sharing ideas!
+        </p>
+        </section>
+
+        <section id="about" className="section mt-3">
+          About Me
+          <p>Hi there! I'm [Your Name], a dedicated [Your Profession/Title] with a passion for [Your Key Interest or Specialization]. My journey in [Your Field/Industry] started with [Brief Introduction or Origin], and since then, I’ve been fortunate to work on [Key Projects or Achievements]. I thrive on solving complex problems and continuously learning new skills to stay ahead in the ever-evolving landscape of [Your Industry or Field]. Outside of work, I enjoy [Your Hobbies or Interests], which helps me stay creative and balanced. Whether it's [Specific Hobby/Activity] or [Another Interest], I believe in the power of blending personal interests with professional growth. Feel free to connect with me on [Your Preferred Contact Method] or explore my work and projects on [Your Website/Social Media].</p>
+        </section>
+        <AboutSection />
+        <section id="projects" className="section py-12">
+          Projects
+          {projectInfo.map(project => (
+            <>
+              <li>{project.title}</li>
+              <p>{project.content}</p>
+            </>
+          ))}
+        </section>
+        <section id="project-cards" className="section py-12">
+          Project Cards
+          <div className="flex flex-wrap gap-4 p-4">
+            {projectInfo.map((project) => (
+              <ProjectCard title={project.title} content={project.content} />
+            ))}
+          </div>
+        </section>
+        <section id="contact" className="section">Contact</section>
+
+        
+        {/* <Image
           className="dark:invert"
           src="https://nextjs.org/icons/next.svg"
           alt="Next.js logo"
@@ -47,10 +112,11 @@ export default function Home() {
           >
             Read our docs
           </a>
-        </div>
+        </div> */}
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
+        FOOTER
+        {/* <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
@@ -94,7 +160,7 @@ export default function Home() {
             height={16}
           />
           Go to nextjs.org →
-        </a>
+        </a> */}
       </footer>
     </div>
   );
